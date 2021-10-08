@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>카드 짝맞추기</title>
+    <script defer src="main.js"></script>
+    <style>
+      #start-screen input {
+        width: 200px;
+      }
+
+      #wrapper {
+        margin-top: 20px;
+        padding: 20px;
+        max-width: 450px;
+      }
+      .card {
+        display: inline-block;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        width: 70px;
+        height: 100px;
+        perspective: 140px;
+      }
+      .card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+      }
+      .card.flipped .card-inner {
+        transform: rotateY(180deg);
+      }
+      .card-front,
+      .card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+      }
+      .card-back {
+        background: navy;
+      }
+      .card-front {
+        transform: rotateY(180deg);
+      }
+    </style>
+  </head>
+  <body>
+    <form id="start-screen">
+      <p>몇 쌍의 카드로 게임을 하시겠어요?</p>
+      <p>ex) 6쌍 -> 12장</p>
+      <input
+        id="start-screen-input"
+        type="number"
+        min="6"
+        max="10"
+        required
+        placeholder="6~10 사이의 숫자를 입력"
+      />
+      <button>게임시작</button>
+    </form>
+    <div id="wrapper"></div>
+  </body>
+</html>
